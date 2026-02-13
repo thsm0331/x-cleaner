@@ -1,0 +1,50 @@
+<!-- Made by thsm0331 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 260px; padding: 15px; font-family: sans-serif; background-color: #f7f9f9; }
+    .status-box { background: white; padding: 10px; border-radius: 8px; border: 1px solid #eff3f4; margin-bottom: 12px; }
+    .count-label { font-size: 12px; color: #536471; }
+    .count-val { font-size: 18px; font-weight: bold; color: #1d9bf0; }
+    .msg-label { font-size: 11px; color: #e0245e; margin-top: 5px; display: block; }
+    .option-box { margin-bottom: 12px; font-size: 12px; color: #0f1419; display: flex; flex-direction: column; gap: 8px; }
+    .date-input { width: 100%; padding: 5px; border: 1px solid #cfd9de; border-radius: 4px; box-sizing: border-box; margin-top: 2px; }
+    .radio-group { display: flex; flex-direction: column; gap: 4px; background: #fff; padding: 8px; border-radius: 6px; border: 1px solid #eff3f4; }
+    button { 
+      width: 100%; padding: 10px; margin-bottom: 8px; cursor: pointer;
+      background-color: #1d9bf0; color: white; border: none; border-radius: 20px; font-weight: bold;
+    }
+    button:hover { background-color: #1a8cd8; }
+    button.secondary { background-color: #cfd9de; color: #0f1419; }
+    button.danger { background-color: #f7f9f9; color: #e0245e; border: 1px solid #e0245e; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div class="status-box">
+    <div class="count-label">누적 처리 항목: <span class="count-val" id="counter">0</span>개</div>
+    <span class="msg-label" id="statusMsg">대기 중...</span>
+  </div>
+
+  <div class="option-box">
+    <div class="radio-group">
+      <label><b>작업 모드:</b></label>
+      <label><input type="radio" name="opMode" value="ALL" checked> 전체 (멘션 + 리트윗)</label>
+      <label><input type="radio" name="opMode" value="POST_ONLY"> 멘션(게시물/답글)만</label>
+      <label><input type="radio" name="opMode" value="RT_ONLY"> 리트윗만</label>
+    </div>
+    <label><input type="checkbox" id="excludeMain"> 답글 탭 메인 트윗 보호</label>
+    <div><label>시작일: <input type="date" id="startDate" class="date-input"></label></div>
+    <div><label>종료일: <input type="date" id="endDate" class="date-input"></label></div>
+    <input type="range" id="speedRange" min="300" max="3000" step="100" value="1000" style="width:100%;">
+    <div style="font-size:10px; text-align:right;"><span id="speedVal">1000</span>ms</div>
+  </div>
+
+  <button id="postsBtn">정리 시작</button>
+  <button id="likesBtn" class="secondary">마음 취소 시작</button>
+  <button id="stopBtn" class="danger">중단 및 초기화</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
